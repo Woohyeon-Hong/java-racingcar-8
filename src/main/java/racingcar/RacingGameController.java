@@ -30,5 +30,7 @@ public class RacingGameController {
             }
             System.out.println();
         }
+
+        outputView.printRaceResultPrompt();
     }
 }

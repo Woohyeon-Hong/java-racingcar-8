@@ -32,4 +32,8 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public void printRaceResultPrompt() {
+        System.out.print("최종 우승자 : ");
+    }
 }

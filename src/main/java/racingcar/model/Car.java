@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
@@ -8,6 +9,13 @@ public class Car {
     private final String name;
     private int movedDistance;
 
+    public static List<Car> createRaceCarList(List<String> carNameList) {
+        List<Car> raceCarList = new ArrayList<>();
+        for (String carName : carNameList) {
+            raceCarList.add(new Car(carName));
+        }
+        return raceCarList;
+    }
 
     public Car(String name) {
         this.name = name;

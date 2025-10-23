@@ -16,7 +16,7 @@ public class InputView {
     public List<Car> inputCarNames() {
         String carNames = Console.readLine();
         List<String> carNameList = extractCarNamesFrom(carNames);
-        return createCarList(carNameList);
+        return Car.createRaceCarList(carNameList);
     }
 
     public int inputTotalRounds() {
@@ -32,15 +32,6 @@ public class InputView {
         return carNameList;
     }
 
-
-    private List<Car> createCarList(List<String> carNameList) {
-        List<Car> carList = new ArrayList<>();
-        for (String carName : carNameList) {
-            carList.add(new Car(carName));
-        }
-
-        return carList;
-    }
 
     private void validatePositiveNumber(String input) {
         if (!input.matches("[+-]?\\d+")) {

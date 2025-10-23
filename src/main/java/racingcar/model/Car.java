@@ -1,9 +1,13 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
+
 public class Car {
 
-    private String name;
+    private final String name;
     private int movedDistance;
+
 
     public Car(String name) {
         this.name = name;
@@ -16,5 +20,12 @@ public class Car {
 
     public int getMovedDistance() {
         return movedDistance;
+    }
+
+    public void move() {
+        int number = Randoms.pickNumberInRange(0, 9);
+        if (number >= 4) {
+            movedDistance++;
+        }
     }
 }

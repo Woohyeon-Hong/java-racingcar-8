@@ -19,6 +19,12 @@ public class InputView {
         return createCarList(carNameList);
     }
 
+    public int inputTotalRounds() {
+        String input = Console.readLine();
+        validatePositiveNumber(input);
+        return Integer.parseInt(input);
+    }
+
     public List<String> extractCarNamesFrom(String carNames) {
         List<String> carNameList = getCarNameListFrom(carNames);
         validateCarNameFormat(carNameList);
@@ -34,6 +40,12 @@ public class InputView {
         }
 
         return carList;
+    }
+
+    private void validatePositiveNumber(String input) {
+        if (!input.matches("[+-]?\\d+")) {
+            throw new IllegalArgumentException("시도할 횟수는 반드시 자연수여야 합니다.");
+        }
     }
 
     private static List<String> getCarNameListFrom(String carNames) {

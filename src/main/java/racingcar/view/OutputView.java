@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.List;
 import racingcar.model.Car;
 
 public class OutputView {
@@ -35,5 +36,19 @@ public class OutputView {
 
     public void printRaceResultPrompt() {
         System.out.print("최종 우승자 : ");
+    }
+
+    public void printRaceResult(List<Car> winners) {
+        if (winners.size() == 1) {
+            System.out.println(winners.get(0).getName());
+        } else {
+            for (int i = 0; i < winners.size(); i++) {
+                System.out.print(winners.get(i).getName());
+                if (i < winners.size() - 1) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println();
+        }
     }
 }

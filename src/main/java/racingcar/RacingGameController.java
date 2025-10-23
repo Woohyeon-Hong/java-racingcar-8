@@ -32,5 +32,6 @@ public class RacingGameController {
         }
 
         outputView.printRaceResultPrompt();
+        List<Car> winners = Car.findWinners(carList);
     }
 }

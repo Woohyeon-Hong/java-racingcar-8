@@ -16,6 +16,23 @@ public class Car {
         }
         return raceCarList;
     }
+    public static List<Car> findWinners(List<Car> carList) {
+
+        List<Car> winners = new ArrayList<>();
+        winners.add(carList.get(0));
+
+        for (Car car : carList) {
+            int maxDistance = winners.get(0).getMovedDistance();
+            if (car.getMovedDistance() > maxDistance) {
+                winners = new ArrayList<>();
+                winners.add(car);
+            } else if (car.getMovedDistance() == maxDistance && !winners.contains(car)) {
+                winners.add(car);
+            }
+        }
+
+        return winners;
+    }
 
     public Car(String name) {
         this.name = name;

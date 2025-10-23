@@ -12,4 +12,9 @@ class OutputViewTest {
     void printStartPrompt() {
         outputView.printStartPrompt();
     }
+
+    @Test
+    void printRaceProgressPrompt() {
+        outputView.printRaceProgressPrompt();
+    }
 }

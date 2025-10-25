@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -14,8 +13,8 @@ public class InputView {
     }
 
     public List<Car> inputCarNames() {
-        String carNames = Console.readLine();
-        List<String> carNameList = extractCarNamesFrom(carNames);
+        String input = Console.readLine();
+        List<String> carNameList = extractCarNamesFrom(input);
         return Car.createRaceCarList(carNameList);
     }
 
@@ -26,12 +25,11 @@ public class InputView {
     }
 
     public List<String> extractCarNamesFrom(String carNames) {
-        List<String> carNameList = getCarNameListFrom(carNames);
+        List<String> carNameList = createCarNameListFrom(carNames);
         validateCarNameFormat(carNameList);
         validateDuplicate(carNameList);
         return carNameList;
     }
-
 
     private void validatePositiveNumber(String input) {
         if (!input.matches("[+-]?\\d+")) {
@@ -39,12 +37,10 @@ public class InputView {
         }
     }
 
-    private static List<String> getCarNameListFrom(String carNames) {
-        String[] splits = carNames.split(",");
-        for (String split : splits) {
-            
-        }
-        return Arrays.stream(carNames.split(",")).toList();
+    private static List<String> createCarNameListFrom(String input) {
+        return Arrays
+                .stream(input.split(","))
+                .toList();
     }
 
     private void validateCarNameFormat(List<String> carNameList) {

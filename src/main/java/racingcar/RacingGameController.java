@@ -16,21 +16,41 @@ public class RacingGameController {
     }
 
     public void run() {
+        List<Car> carList = setupCarList();
+        int totalRounds = setupGameRound();
+        playRacing(totalRounds, carList);
+        announceWinner(carList);
+    }
+
+    private List<Car> setupCarList() {
         outputView.printStartPrompt();
-        List<Car> carList = inputView.inputCarNames();
+        return inputView.inputCarNames();
+    }
+
+    private int setupGameRound() {
         outputView.printTotalRoundPrompt();
-        int totalRounds = inputView.inputTotalRounds();
+        return inputView.inputTotalRounds();
+    }
+
+    private void playRacing(int totalRounds, List<Car> carList) {
         outputView.printRaceProgressPrompt();
 
         for (int i = 0; i < totalRounds; i++) {
-            for (Car car : carList) {
-                outputView.printCarName(car);
-                car.move();
-                outputView.printCarMovement(car);
-            }
-            System.out.println();
+            runRaceRound(carList);
+        }
+    }
+
+    private void runRaceRound(List<Car> carList) {
+        for (Car car : carList) {
+            outputView.printCarName(car);
+            car.move();
+            outputView.printCarMovement(car);
         }
 
+        System.out.println();
+    }
+
+    private void announceWinner(List<Car> carList) {
         outputView.printRaceResultPrompt();
         List<Car> winners = Car.findWinners(carList);
         outputView.printRaceResult(winners);

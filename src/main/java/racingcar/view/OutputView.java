@@ -50,7 +50,8 @@ public class OutputView {
         printMultipleWinners(winners);
     }
 
-    private static void printPositionIndicatorsWith(int distance) {
+    //이동한 거리만큼 "-" 출력
+    private static void printPositionIndicatorsWith(int distance){
         for (int i = 0; i < distance; i++) {
             System.out.print(POSITION_INDICATOR);
         }

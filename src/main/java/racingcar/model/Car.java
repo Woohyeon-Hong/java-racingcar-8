@@ -40,6 +40,7 @@ public class Car {
                 .toList();
     }
 
+    //최대 이동 거리 조회
     private static int getMaxMovedDistance(List<Car> carList) {
         return carList.stream()
                 .mapToInt(Car::getMovedDistance)
@@ -48,6 +49,8 @@ public class Car {
     }
 
     //------------------------------------------------------------------------------
+
+    //매 라운드마다 랜덤한 숫자를 바탕으로 이동 여부 결정
     public void runRound() {
         int number = Randoms.pickNumberInRange(0, 9);
         if (number >= 4) {

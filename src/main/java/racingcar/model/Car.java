@@ -31,7 +31,7 @@ public class Car {
                 .forEach((carName) -> raceCarList.add(new Car(carName)));
         return raceCarList;
     }
-    public static List<Car> findWinners(List<Car> carList) {
+    public static List<Car> findFinalWinners(List<Car> carList) {
         List<Car> winners = new ArrayList<>();
         int maxMovedDistance = getMaxMovedDistance(carList);
 
@@ -50,7 +50,7 @@ public class Car {
     }
 
     //------------------------------------------------------------------------------
-    public void move() {
+    public void runRound() {
         int number = Randoms.pickNumberInRange(0, 9);
         if (number >= 4) {
             movedDistance++;

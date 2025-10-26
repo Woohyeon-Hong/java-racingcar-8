@@ -37,12 +37,12 @@ class CarTest {
         //총 10번의 라운드를 진행
         for (int i = 0; i < 10; i++) {
             for (Car car : raceCarList) {
-                car.move();
+                car.runRound();
             }
         }
 
         //when
-        List<Car> winners = Car.findWinners(raceCarList);
+        List<Car> winners = Car.findFinalWinners(raceCarList);
 
         //then
         for (Car winner : winners) {

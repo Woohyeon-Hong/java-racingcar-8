@@ -43,7 +43,7 @@ public class RacingGameController {
     private void playRound(List<Car> carList) {
         for (Car car : carList) {
             outputView.printCarName(car);
-            car.move();
+            car.runRound();
             outputView.printCarMovement(car);
         }
 
@@ -52,7 +52,7 @@ public class RacingGameController {
 
     private void announceWinner(List<Car> carList) {
         outputView.printFinalWinnerPrompt();
-        List<Car> winners = Car.findWinners(carList);
+        List<Car> winners = Car.findFinalWinners(carList);
         outputView.printRaceResult(winners);
     }
 }

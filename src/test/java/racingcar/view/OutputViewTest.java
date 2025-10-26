@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -13,12 +11,12 @@ class OutputViewTest {
 
     @Test
     void printStartPrompt() {
-        outputView.printStartPrompt();
+        outputView.printCarNameInputPrompt();
     }
 
     @Test
     void printRaceProgressPrompt() {
-        outputView.printRaceProgressPrompt();
+        outputView.printRaceStartPrompt();
     }
 
     @Test

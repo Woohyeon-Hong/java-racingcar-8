@@ -11,19 +11,19 @@ public class OutputView {
     }
 
 //프롬프트 출력------------------------------------------------------------------------------------------------
-    public void printStartPrompt() {
+    public void printCarNameInputPrompt() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     }
 
-    public void printTotalRoundPrompt() {
+    public void printRoundCountInputPrompt() {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public void printRaceProgressPrompt() {
+    public void printRaceStartPrompt() {
         System.out.println("\n실행 결과");
     }
 
-    public void printRaceResultPrompt() {
+    public void printFinalWinnerPrompt() {
         System.out.print("최종 우승자 : ");
     }
 
@@ -37,16 +37,16 @@ public class OutputView {
     public void printCarMovement(Car car) {
         int distance = car.getMovedDistance();
         printPositionIndicatorsWith(distance);
-        changeLine();
+        printNewLine();
     }
 
     public void printRaceResult(List<Car> winners) {
-        if (isSoleWinner(winners)) {
+        if (isSingleWinner(winners)) {
             printWinnerName(winners.get(0));
             return;
         }
 
-        printWinners(winners);
+        printMultipleWinners(winners);
     }
 
     private static void printPositionIndicatorsWith(int distance) {
@@ -55,16 +55,16 @@ public class OutputView {
         }
     }
 
-    private static boolean isSoleWinner(List<Car> winners) {
+    private static boolean isSingleWinner(List<Car> winners) {
         return winners.size() == 1;
     }
 
-    private static void printWinners(List<Car> winners) {
+    private static void printMultipleWinners(List<Car> winners) {
         for (int i = 0; i < winners.size(); i++) {
             printWinnerName(winners.get(i));
             printComma(winners, i);
         }
-        changeLine();
+        printNewLine();
     }
 
     private static void printWinnerName(Car winner) {
@@ -77,7 +77,7 @@ public class OutputView {
         }
     }
 
-    private static void changeLine() {
+    private static void printNewLine() {
         System.out.println();
     }
 

@@ -23,24 +23,24 @@ public class RacingGameController {
     }
 
     private List<Car> setupCarList() {
-        outputView.printStartPrompt();
+        outputView.printCarNameInputPrompt();
         return inputView.inputCarNames();
     }
 
     private int setupGameRound() {
-        outputView.printTotalRoundPrompt();
+        outputView.printRoundCountInputPrompt();
         return inputView.inputTotalRounds();
     }
 
     private void playRacing(int totalRounds, List<Car> carList) {
-        outputView.printRaceProgressPrompt();
+        outputView.printRaceStartPrompt();
 
         for (int i = 0; i < totalRounds; i++) {
-            runRaceRound(carList);
+            playRound(carList);
         }
     }
 
-    private void runRaceRound(List<Car> carList) {
+    private void playRound(List<Car> carList) {
         for (Car car : carList) {
             outputView.printCarName(car);
             car.move();
@@ -51,7 +51,7 @@ public class RacingGameController {
     }
 
     private void announceWinner(List<Car> carList) {
-        outputView.printRaceResultPrompt();
+        outputView.printFinalWinnerPrompt();
         List<Car> winners = Car.findWinners(carList);
         outputView.printRaceResult(winners);
     }

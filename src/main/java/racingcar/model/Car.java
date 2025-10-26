@@ -2,7 +2,6 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class Car {
@@ -36,17 +35,16 @@ public class Car {
         int maxMovedDistance = getMaxMovedDistance(carList);
 
         //maxMovedDistance와 같은 거리를 이동한 모든 우승자들을 winners에 추가
-        for (Car car : carList) {
-            if (car.getMovedDistance() < maxMovedDistance) break;
-            winners.add(car);
-        }
-        return winners;
+        return carList.stream()
+                .filter(c -> c.getMovedDistance() == maxMovedDistance)
+                .toList();
     }
 
     private static int getMaxMovedDistance(List<Car> carList) {
-        //movedDistance를 기준으로 내림차순 정렬 & 가장 멀리 이동한 자동차의 movedDistance 반환
-        carList.sort(Comparator.comparing(Car::getMovedDistance).reversed());
-        return carList.get(0).getMovedDistance();
+        return carList.stream()
+                .mapToInt(Car::getMovedDistance)
+                .max()
+                .orElse(0);
     }
 
     //------------------------------------------------------------------------------

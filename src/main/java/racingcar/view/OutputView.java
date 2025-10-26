@@ -43,6 +43,7 @@ public class OutputView {
     public void printRaceResult(List<Car> winners) {
         if (isSingleWinner(winners)) {
             printWinnerName(winners.get(0));
+            printNewLine();
             return;
         }
 

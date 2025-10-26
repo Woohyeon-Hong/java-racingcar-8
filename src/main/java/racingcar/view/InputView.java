@@ -20,8 +20,7 @@ public class InputView {
 
     public int inputTotalRounds() {
         String input = Console.readLine();
-        validatePositiveNumber(input);
-        return Integer.parseInt(input);
+        return getNumberFrom(input);
     }
 
     public List<String> extractCarNamesFrom(String carNames) {
@@ -31,10 +30,10 @@ public class InputView {
         return carNameList;
     }
 
-    private void validatePositiveNumber(String input) {
-        if (!input.matches("[+-]?\\d+")) {
-            throw new IllegalArgumentException("시도할 횟수는 반드시 자연수여야 합니다.");
-        }
+    private int getNumberFrom(String input) {
+        int number = parseFor(input);
+        validatePositiveInteger(number);
+        return number;
     }
 
     private static List<String> createCarNameListFrom(String input) {
@@ -57,6 +56,21 @@ public class InputView {
             throw new IllegalArgumentException("서로 이름이 중복되는 자동차 이름이 존재합니다.");
         }
     }
+
+    private static int parseFor(String input) {
+        int number;
+        try {
+            number = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수는 숫자여야 합니다.");
+        }
+        return number;
+    }
+
+    private static void validatePositiveInteger(int number) {
+        if (number <= 0) throw new IllegalArgumentException("시도할 횟수는 반드시 1 이상이어야 합니다.");
+    }
+
 
     private static void validateBlank(String carName) {
         if (carName.isBlank()) throw new IllegalArgumentException("자동차 이름으로 빈값이 입력됐습니다.");
